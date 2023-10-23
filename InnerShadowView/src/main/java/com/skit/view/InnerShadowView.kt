@@ -1,4 +1,4 @@
-package com.skit.cis
+package com.skit.view
 
 import android.content.Context
 import android.graphics.Canvas
@@ -24,11 +24,11 @@ class InnerShadowView @JvmOverloads constructor(
         }
     }
 
-    var round = 0f
+    var cornerRadius = 0f
         private set
 
     fun setRound(round: Float) {
-        this.round = round
+        this.cornerRadius = round
         invalidate()
         invalidateOutline()
     }
@@ -45,7 +45,13 @@ class InnerShadowView @JvmOverloads constructor(
             override fun getOutline(view: View?, outline: Outline?) {
                 view ?: return
                 outline ?: return
-                return outline.setRoundRect(0, 0, view.measuredWidth, view.measuredHeight, round)
+                return outline.setRoundRect(
+                    0,
+                    0,
+                    view.measuredWidth,
+                    view.measuredHeight,
+                    cornerRadius
+                )
             }
         }
     }
@@ -57,7 +63,7 @@ class InnerShadowView @JvmOverloads constructor(
     private fun initAttrs(attrs: AttributeSet?, context: Context) {
         attrs ?: return
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.InnerShadowView)
-        round = typedArray.getDimension(R.styleable.InnerShadowView_round, 0f)
+        cornerRadius = typedArray.getDimension(R.styleable.InnerShadowView_cornerRadius, 0f)
         shadowColor = typedArray.getColor(R.styleable.InnerShadowView_shadowColor, Color.BLACK)
         typedArray.recycle()
     }
@@ -79,7 +85,7 @@ class InnerShadowView @JvmOverloads constructor(
 
     private fun drawInnerShadow(canvas: Canvas) {
         canvas.save()
-        shadowLineRect?.let { canvas.drawRoundRect(it, round, round, shadowPaint) }
+        shadowLineRect?.let { canvas.drawRoundRect(it, cornerRadius, cornerRadius, shadowPaint) }
         canvas.restore()
     }
 

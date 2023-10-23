@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <com.skit.cis.InnerShadowView
+    <com.skit.view.InnerShadowView
         android:id="@+id/shadow_view"
         android:layout_width="200dp"
         android:layout_height="100dp"
@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:text="Content Text"
             android:textColor="@color/black" />
-    </com.skit.cis.InnerShadowView>
+    </com.skit.view.InnerShadowView>
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_size"

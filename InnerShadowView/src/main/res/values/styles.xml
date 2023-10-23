@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="InnerShadowView">
-        <attr name="round" format="dimension" />
+        <attr name="cornerRadius" format="dimension" />
         <attr name="shadowColor" format="color" />
     </declare-styleable>
 </resources>

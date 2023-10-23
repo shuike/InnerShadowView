@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.widget.SeekBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.skit.view.InnerShadowView
 import kotlin.math.min
 
 class MainActivity : AppCompatActivity() {

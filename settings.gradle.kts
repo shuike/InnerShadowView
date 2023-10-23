@@ -14,5 +14,5 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "InnerShadow"
-include(":app")
- 
+include(":example")
+include(":InnerShadowView")
