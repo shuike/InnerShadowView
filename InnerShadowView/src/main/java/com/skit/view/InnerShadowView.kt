@@ -14,6 +14,10 @@ import android.widget.FrameLayout
 class InnerShadowView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : FrameLayout(context, attrs, defStyleAttr) {
+    private var shadowDx: Float = 0f
+    private var shadowDy: Float = 0f
+    var shadowRadius: Float = SHADOW_RADIUS
+        private set
     private var shadowLineRect: RectF? = null
     private var shadowColor: Int = Color.BLACK
     private val shadowPaint: Paint by lazy {
@@ -33,9 +37,15 @@ class InnerShadowView @JvmOverloads constructor(
         invalidateOutline()
     }
 
+    fun setShadowRadius(round: Float) {
+        this.shadowRadius = round
+        initPaintsShadow()
+        invalidate()
+    }
+
     init {
         initAttrs(attrs, context)
-        initPaints()
+        initPaintsShadow()
         initOutlineProvider()
     }
 
@@ -56,8 +66,8 @@ class InnerShadowView @JvmOverloads constructor(
         }
     }
 
-    private fun initPaints() {
-        shadowPaint.setShadowLayer(SHADOW_RADIUS, 0f, 0f, shadowColor)
+    private fun initPaintsShadow() {
+        shadowPaint.setShadowLayer(shadowRadius, shadowDx, shadowDy, shadowColor)
     }
 
     private fun initAttrs(attrs: AttributeSet?, context: Context) {
@@ -65,6 +75,9 @@ class InnerShadowView @JvmOverloads constructor(
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.InnerShadowView)
         cornerRadius = typedArray.getDimension(R.styleable.InnerShadowView_cornerRadius, 0f)
         shadowColor = typedArray.getColor(R.styleable.InnerShadowView_shadowColor, Color.BLACK)
+        shadowRadius = typedArray.getFloat(R.styleable.InnerShadowView_shadowRadius, SHADOW_RADIUS)
+        shadowDx = typedArray.getFloat(R.styleable.InnerShadowView_shadowDx, 0f)
+        shadowDy = typedArray.getFloat(R.styleable.InnerShadowView_shadowDy, 0f)
         typedArray.recycle()
     }
 

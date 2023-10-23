@@ -3,5 +3,8 @@
     <declare-styleable name="InnerShadowView">
         <attr name="cornerRadius" format="dimension" />
         <attr name="shadowColor" format="color" />
+        <attr name="shadowRadius" format="float" />
+        <attr name="shadowDx" format="float" />
+        <attr name="shadowDy" format="float" />
     </declare-styleable>
 </resources>

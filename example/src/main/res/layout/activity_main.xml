@@ -12,7 +12,7 @@
         android:layout_height="100dp"
         android:background="@color/white"
         android:padding="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/ll_bottom"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -25,20 +25,71 @@
             android:textColor="@color/black" />
     </com.skit.view.InnerShadowView>
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_size"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@id/seek_bar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:text="10" />
 
-    <androidx.appcompat.widget.AppCompatSeekBar
-        android:id="@+id/seek_bar"
+    <LinearLayout
+        android:id="@+id/ll_bottom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="50dp"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_shadow_radius"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="8dp"
+            tools:text="10" />
+
+        <LinearLayout
+            android:id="@+id/ll_shadow_radius"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginBottom="50dp"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="Shadow Radius"
+                android:textSize="12dp" />
+
+            <androidx.appcompat.widget.AppCompatSeekBar
+                android:id="@+id/shadow_radius_seek_bar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_radius"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="8dp"
+            tools:text="10" />
+
+        <LinearLayout
+            android:id="@+id/ll_radius"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginBottom="50dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="Radius"
+                android:textSize="12dp" />
+
+            <androidx.appcompat.widget.AppCompatSeekBar
+                android:id="@+id/seek_bar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
